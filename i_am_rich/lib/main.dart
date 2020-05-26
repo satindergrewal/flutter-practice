@@ -36,9 +36,12 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: Center(
-        child: Image(
-          image: NetworkImage(
-              'https://miro.medium.com/max/1400/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg'),
+        child: Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Image(
+            image: NetworkImage(
+                'https://miro.medium.com/max/1400/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg'),
+          ),
         ),
       ),
       backgroundColor: Colors.black87,
