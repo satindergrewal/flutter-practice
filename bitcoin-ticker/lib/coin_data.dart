@@ -35,16 +35,20 @@ const List<String> cryptoList = [
 ];
 
 class CoinData {
-  Future getCoinData() async {
-    String url = '$coinApiURL/BTC/USD?apikey=$apiKey';
-    http.Response response = await http.get(url);
-    if (response.statusCode == 200) {
-      var decodeData = jsonDecode(response.body);
-      var lastPrice = decodeData['rate'];
-      return lastPrice;
-    } else {
-      print(response.statusCode);
-      throw 'Problem with the target request';
+  Future getCoinData(String selectedCurrency) async {
+    Map<String, String> cryptoPrices = {};
+    for (String crypto in cryptoList) {
+      String url = '$coinApiURL/$crypto/$selectedCurrency?apikey=$apiKey';
+      http.Response response = await http.get(url);
+      if (response.statusCode == 200) {
+        var decodeData = jsonDecode(response.body);
+        var lastPrice = decodeData['rate'];
+        cryptoPrices[crypto] = lastPrice.toStringAsFixed(0);
+      } else {
+        print(response.statusCode);
+        throw 'Problem with the target request';
+      }
     }
+    return cryptoPrices;
   }
 }
