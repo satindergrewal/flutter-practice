@@ -21,3 +21,4 @@ doc/api/
 *.js.map
 flash-chat/ios/Runner/GoogleService-Info.plist
 flash-chat/android/app/google-services.json
+.DS_Store
