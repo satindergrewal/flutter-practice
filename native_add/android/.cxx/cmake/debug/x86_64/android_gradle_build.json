@@ -1,0 +1,41 @@
+
+{
+	"buildFiles" : 
+	[
+		"/Users/satinder/Documents/GitHub/flutter-practice/native_add/android/CMakeLists.txt"
+	],
+	"cleanCommands" : 
+	[
+		"/Users/satinder/Library/Android/sdk/cmake/3.6.4111459/bin/cmake --build /Users/satinder/Documents/GitHub/flutter-practice/native_add/android/.cxx/cmake/debug/x86_64 --target clean"
+	],
+	"cppFileExtensions" : [ "cpp" ],
+	"libraries" : 
+	{
+		"native_add-Debug-x86_64" : 
+		{
+			"abi" : "x86_64",
+			"artifactName" : "native_add",
+			"buildCommand" : "/Users/satinder/Library/Android/sdk/cmake/3.6.4111459/bin/cmake --build /Users/satinder/Documents/GitHub/flutter-practice/native_add/android/.cxx/cmake/debug/x86_64 --target native_add",
+			"buildType" : "debug",
+			"files" : 
+			[
+				
+				{
+					"flags" : "  --target=x86_64-none-linux-android21 --gcc-toolchain=/Users/satinder/Library/Android/sdk/ndk/21.3.6528147/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/satinder/Library/Android/sdk/ndk/21.3.6528147/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dnative_add_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security   -O0 -fno-limit-debug-info  -fPIC    -c ",
+					"src" : "/Users/satinder/Documents/GitHub/flutter-practice/native_add/ios/Classes/native_add.cpp",
+					"workingDirectory" : "/Users/satinder/Documents/GitHub/flutter-practice/native_add/android/.cxx/cmake/debug/x86_64"
+				}
+			],
+			"output" : "/Users/satinder/Documents/GitHub/flutter-practice/native_add/example/build/native_add/intermediates/cmake/debug/obj/x86_64/libnative_add.so",
+			"toolchain" : "3834471132767560976"
+		}
+	},
+	"toolchains" : 
+	{
+		"3834471132767560976" : 
+		{
+			"cCompilerExecutable" : "/Users/satinder/Library/Android/sdk/ndk/21.3.6528147/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang",
+			"cppCompilerExecutable" : "/Users/satinder/Library/Android/sdk/ndk/21.3.6528147/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang++"
+		}
+	}
+}

@@ -1,0 +1,3 @@
+/Users/satinder/Documents/GitHub/flutter-practice/native_add/android/.cxx/cmake/debug/arm64-v8a/CMakeFiles/edit_cache.dir
+/Users/satinder/Documents/GitHub/flutter-practice/native_add/android/.cxx/cmake/debug/arm64-v8a/CMakeFiles/rebuild_cache.dir
+/Users/satinder/Documents/GitHub/flutter-practice/native_add/android/.cxx/cmake/debug/arm64-v8a/CMakeFiles/native_add.dir

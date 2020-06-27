@@ -1,0 +1,2 @@
+[1/2] Building CXX object CMakeFiles/native_add.dir/Users/satinder/Documents/GitHub/flutter-practice/native_add/ios/Classes/native_add.cpp.o
+[2/2] Linking CXX shared library /Users/satinder/Documents/GitHub/flutter-practice/native_add/example/build/native_add/intermediates/cmake/debug/obj/arm64-v8a/libnative_add.so

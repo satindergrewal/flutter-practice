@@ -1,0 +1,16 @@
+{
+  "buildFiles": [
+    "/Users/satinder/Documents/GitHub/flutter-practice/native_add/android/CMakeLists.txt"
+  ],
+  "cleanCommands": [
+    "/Users/satinder/Library/Android/sdk/cmake/3.6.4111459/bin/cmake --build /Users/satinder/Documents/GitHub/flutter-practice/native_add/android/.cxx/cmake/debug/x86 --target clean"
+  ],
+  "libraries": {
+    "native_add-Debug-x86": {
+      "artifactName": "native_add",
+      "buildCommand": "/Users/satinder/Library/Android/sdk/cmake/3.6.4111459/bin/cmake --build /Users/satinder/Documents/GitHub/flutter-practice/native_add/android/.cxx/cmake/debug/x86 --target native_add",
+      "abi": "x86",
+      "output": "/Users/satinder/Documents/GitHub/flutter-practice/native_add/example/build/native_add/intermediates/cmake/debug/obj/x86/libnative_add.so"
+    }
+  }
+}

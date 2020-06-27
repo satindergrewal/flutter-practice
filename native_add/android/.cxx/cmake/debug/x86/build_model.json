@@ -1,0 +1,70 @@
+{
+  "variant": {
+    "module": {
+      "rootBuildGradleFolder": "/Users/satinder/Documents/GitHub/flutter-practice/native_add/example/android",
+      "sdkFolder": "/Users/satinder/Library/Android/sdk",
+      "isNativeCompilerSettingsCacheEnabled": false,
+      "isBuildOnlyTargetAbiEnabled": true,
+      "splitsAbiFilterSet": [],
+      "intermediatesFolder": "/Users/satinder/Documents/GitHub/flutter-practice/native_add/example/build/native_add/intermediates",
+      "gradleModulePathName": ":native_add",
+      "moduleRootFolder": "/Users/satinder/Documents/GitHub/flutter-practice/native_add/android",
+      "makeFile": "/Users/satinder/Documents/GitHub/flutter-practice/native_add/android/CMakeLists.txt",
+      "buildSystem": "CMAKE",
+      "compilerSettingsCacheFolder": "/Users/satinder/Documents/GitHub/flutter-practice/native_add/example/android/.cxx",
+      "cxxFolder": "/Users/satinder/Documents/GitHub/flutter-practice/native_add/android/.cxx",
+      "ndkFolder": "/Users/satinder/Library/Android/sdk/ndk/21.3.6528147",
+      "ndkVersion": "21.3.6528147",
+      "ndkSupportedAbiList": [
+        "ARMEABI_V7A",
+        "ARM64_V8A",
+        "X86",
+        "X86_64"
+      ],
+      "ndkDefaultAbiList": [
+        "ARMEABI_V7A",
+        "ARM64_V8A",
+        "X86",
+        "X86_64"
+      ],
+      "cmakeToolchainFile": "."
+    },
+    "buildSystemArgumentList": [],
+    "cFlagList": [],
+    "cppFlagsList": [],
+    "variantName": "debug",
+    "soFolder": "/Users/satinder/Documents/GitHub/flutter-practice/native_add/example/build/native_add/intermediates/cmake/debug/lib",
+    "objFolder": "/Users/satinder/Documents/GitHub/flutter-practice/native_add/example/build/native_add/intermediates/cmake/debug/obj",
+    "jsonFolder": "/Users/satinder/Documents/GitHub/flutter-practice/native_add/android/.cxx/cmake/debug",
+    "gradleBuildOutputFolder": "/Users/satinder/Documents/GitHub/flutter-practice/native_add/android/.cxx/cxx/debug",
+    "isDebuggableEnabled": true,
+    "validAbiList": [
+      "ARMEABI_V7A",
+      "ARM64_V8A",
+      "X86",
+      "X86_64"
+    ],
+    "buildTargetSet": []
+  },
+  "abi": "X86",
+  "abiPlatformVersion": 16,
+  "cxxBuildFolder": "/Users/satinder/Documents/GitHub/flutter-practice/native_add/android/.cxx/cmake/debug/x86",
+  "jsonFile": "/Users/satinder/Documents/GitHub/flutter-practice/native_add/android/.cxx/cmake/debug/x86/android_gradle_build.json",
+  "gradleBuildOutputFolder": "/Users/satinder/Documents/GitHub/flutter-practice/native_add/android/.cxx/cxx/debug/x86",
+  "objFolder": "/Users/satinder/Documents/GitHub/flutter-practice/native_add/example/build/native_add/intermediates/cmake/debug/obj/x86",
+  "buildCommandFile": "/Users/satinder/Documents/GitHub/flutter-practice/native_add/android/.cxx/cmake/debug/x86/build_command.txt",
+  "buildOutputFile": "/Users/satinder/Documents/GitHub/flutter-practice/native_add/android/.cxx/cmake/debug/x86/build_output.txt",
+  "modelOutputFile": "/Users/satinder/Documents/GitHub/flutter-practice/native_add/android/.cxx/cmake/debug/x86/build_model.json",
+  "cmake": {
+    "cmakeListsWrapperFile": "/Users/satinder/Documents/GitHub/flutter-practice/native_add/android/.cxx/cxx/debug/x86/CMakeLists.txt",
+    "toolchainWrapperFile": "/Users/satinder/Documents/GitHub/flutter-practice/native_add/android/.cxx/cxx/debug/x86/android_gradle_build.toolchain.cmake",
+    "buildGenerationStateFile": "/Users/satinder/Documents/GitHub/flutter-practice/native_add/android/.cxx/cxx/debug/x86/build_generation_state.json",
+    "cacheKeyFile": "/Users/satinder/Documents/GitHub/flutter-practice/native_add/android/.cxx/cxx/debug/x86/compiler_cache_key.json",
+    "compilerCacheUseFile": "/Users/satinder/Documents/GitHub/flutter-practice/native_add/android/.cxx/cxx/debug/x86/compiler_cache_use.json",
+    "compilerCacheWriteFile": "/Users/satinder/Documents/GitHub/flutter-practice/native_add/android/.cxx/cxx/debug/x86/compiler_cache_write.json",
+    "toolchainSettingsFromCacheFile": "/Users/satinder/Documents/GitHub/flutter-practice/native_add/android/.cxx/cxx/debug/x86/compiler_settings_cache.cmake",
+    "cmakeWrappingBaseFolder": "."
+  },
+  "jsonGenerationLoggingRecordFile": "/Users/satinder/Documents/GitHub/flutter-practice/native_add/android/.cxx/cmake/debug/x86/json_generation_record.json",
+  "compileCommandsJsonFile": "/Users/satinder/Documents/GitHub/flutter-practice/native_add/android/.cxx/cmake/debug/x86/compile_commands.json"
+}
