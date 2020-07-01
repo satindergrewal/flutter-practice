@@ -22,3 +22,4 @@ doc/api/
 flash-chat/ios/Runner/GoogleService-Info.plist
 flash-chat/android/app/google-services.json
 .DS_Store
+go_dart_ffi_c_shared/shurli.pid
