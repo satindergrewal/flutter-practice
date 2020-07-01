@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include "awesome.h"
-#include "greet/greet_server/greeter.h"
+// #include "greet/greet_server/greeter.h"
+#include "greeter_daemon.h"
 
 int main() {
     printf("Using awesome lib from current directory\n");
@@ -35,3 +36,7 @@ int main() {
 // 
 // It needs greeter.so file along with client executable file:
 // mv greet/greet_server/greeter.so .
+
+
+// For Greeter with daemon mode:
+// gcc -o client client1.c ./awesome.so ./greeter_daemon.so
