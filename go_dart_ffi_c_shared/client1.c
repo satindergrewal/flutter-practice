@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include "awesome.h"
+#include "greet/greet_server/greeter.h"
 
 int main() {
     printf("Using awesome lib from current directory\n");
@@ -25,4 +26,12 @@ int main() {
     //Call Log() - passing string value
     GoString msg = {"Hello from C!", 13};
     Log(msg);
+
+    StartGrpc();
 }
+
+// Compile with command:
+// gcc -o client client1.c ./awesome.so greet/greet_server/greeter.so
+// 
+// It needs greeter.so file along with client executable file:
+// mv greet/greet_server/greeter.so .
