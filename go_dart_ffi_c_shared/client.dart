@@ -29,3 +29,6 @@ void main(List<String> args) {
   final void Function() startGrpc = greeter.lookup<NativeFunction<Void Function()>>("StartGrpc").asFunction();
   startGrpc();
 }
+
+// Compile this file as a native using dart2native
+// dart2native client.dart -o dartclient 
