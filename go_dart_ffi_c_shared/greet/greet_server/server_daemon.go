@@ -143,8 +143,8 @@ func (*server) GreetWithDeadline(ctx context.Context, req *greetpb.GreetWithDead
 func StartGrpc() {
 
 	if len(os.Args) != 2 {
-		fmt.Printf("Usage : %s [start|stop] \n ", os.Args[0]) // return the program name back to %s
-		os.Exit(0)                                            // graceful exit
+		fmt.Printf("Usage : %s [start|stop] \n", os.Args[0]) // return the program name back to %s
+		os.Exit(0)                                           // graceful exit
 	}
 
 	// If running with command "./shurli main"
