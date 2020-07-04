@@ -1,3 +1,5 @@
+/// Example code from: https://codingwithjoe.com/dart-fundamentals-isolates/
+/// Flutter example code from: https://gist.github.com/jebright/a7086adc305615aa3a655c6d8bd90264
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'dart:isolate';
