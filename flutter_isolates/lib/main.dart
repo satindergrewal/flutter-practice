@@ -61,15 +61,15 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
-  static void _startGrpc(SendPort sendPort) {
+  static void _startGrpc(SendPort sendPort) async {
     // -- Normal gRPC server start code --
-    final greeter = DynamicLibrary.open('./greeter.so');
+    final greeter = DynamicLibrary.open('assets/greeter.so');
     final void Function() startGrpc = greeter
         .lookup<NativeFunction<Void Function()>>('StartGrpc')
         .asFunction();
-    startGrpc();
     String msg = "Started gRPC server...";
     sendPort.send(msg);
+    startGrpc();
   }
 
   void _handleMessage(dynamic data) {
