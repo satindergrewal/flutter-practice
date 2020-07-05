@@ -4,6 +4,15 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'dart:isolate';
 
+import 'dart:ffi';
+
+import 'package:ffi/ffi.dart';
+import 'package:args/args.dart';
+
+// -- Normal gRPC server type definitions --
+typedef startgrpc_func = void Function();
+typedef StartGrpc = void Function();
+
 void main() => runApp(new MyApp());
 
 class MyApp extends StatelessWidget {
@@ -33,28 +42,39 @@ class _MyHomePageState extends State<MyHomePage> {
   static int _counter = 0;
   String notification = "";
   ReceivePort _receivePort;
- 
+
   void _start() async {
     _running = true;
     _receivePort = ReceivePort();
-    _isolate = await Isolate.spawn(_checkTimer, _receivePort.sendPort);
-    _receivePort.listen(_handleMessage, onDone:() {
-        print("done!");
+    _isolate = await Isolate.spawn(_startGrpc, _receivePort.sendPort);
+    _receivePort.listen(_handleMessage, onDone: () {
+      print("done!");
     });
   }
 
   static void _checkTimer(SendPort sendPort) async {
     Timer.periodic(new Duration(seconds: 1), (Timer t) {
       _counter++;
-      String msg = 'notification ' + _counter.toString();      
+      String msg = 'notification ' + _counter.toString();
       print('SEND: ' + msg);
       sendPort.send(msg);
     });
   }
 
+  static void _startGrpc(SendPort sendPort) {
+    // -- Normal gRPC server start code --
+    final greeter = DynamicLibrary.open('./greeter.so');
+    final void Function() startGrpc = greeter
+        .lookup<NativeFunction<Void Function()>>('StartGrpc')
+        .asFunction();
+    startGrpc();
+    String msg = "Started gRPC server...";
+    sendPort.send(msg);
+  }
+
   void _handleMessage(dynamic data) {
     print('RECEIVED: ' + data);
-    setState(() {      
+    setState(() {
       notification = data;
     });
   }
@@ -62,15 +82,14 @@ class _MyHomePageState extends State<MyHomePage> {
   void _stop() {
     if (_isolate != null) {
       setState(() {
-          _running = false; 
-          notification = '';   
+        _running = false;
+        notification = '';
       });
       _receivePort.close();
       _isolate.kill(priority: Isolate.immediate);
-      _isolate = null;        
-      }
+      _isolate = null;
+    }
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -93,6 +112,6 @@ class _MyHomePageState extends State<MyHomePage> {
         tooltip: _running ? 'Timer stop' : 'Timer start',
         child: _running ? new Icon(Icons.stop) : new Icon(Icons.play_arrow),
       ),
-      );
+    );
   }
 }
