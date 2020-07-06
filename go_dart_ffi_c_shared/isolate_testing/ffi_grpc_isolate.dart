@@ -27,9 +27,9 @@ void startGrpc(SendPort sendPort) {
   // -- Normal gRPC server start code --
   final greeter = DynamicLibrary.open('./greeter.so');
   final void Function() startGrpc = greeter.lookup<NativeFunction<Void Function()>>('StartGrpc').asFunction();
-  startGrpc();
   String msg = "Started gRPC server...";
   sendPort.send(msg);
+  startGrpc();
 }
 
 void stop() {  
