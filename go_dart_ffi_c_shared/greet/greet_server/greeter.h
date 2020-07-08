@@ -69,6 +69,8 @@ extern "C" {
 #endif
 
 
+extern void StopGrpc();
+
 extern void StartGrpc();
 
 #ifdef __cplusplus

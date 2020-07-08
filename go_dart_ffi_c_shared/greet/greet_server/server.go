@@ -22,6 +22,8 @@ import (
 
 type server struct{}
 
+var srv *grpc.Server
+
 func (*server) Greet(ctx context.Context, req *greetpb.GreetRequest) (*greetpb.GreetResponse, error) {
 	fmt.Printf("Greet function was invoked with %v\n", req)
 	firstName := req.GetGreeting().GetFirstName()
@@ -107,6 +109,11 @@ func (*server) GreetWithDeadline(ctx context.Context, req *greetpb.GreetWithDead
 	return res, nil
 }
 
+//export StopGrpc
+func StopGrpc() {
+	srv.Stop()
+}
+
 //export StartGrpc
 func StartGrpc() {
 	fmt.Println("Hello world")
@@ -129,15 +136,17 @@ func StartGrpc() {
 		opts = append(opts, grpc.Creds(creds))
 	}
 
-	s := grpc.NewServer(opts...)
-	greetpb.RegisterGreetServiceServer(s, &server{})
+	srv = grpc.NewServer(opts...)
+	greetpb.RegisterGreetServiceServer(srv, &server{})
 
-	if err := s.Serve(lis); err != nil {
+	if err := srv.Serve(lis); err != nil {
 		log.Fatalf("Failed to serve: %v", err)
 	}
 }
 
-func main() {}
+func main() {
+	StartGrpc()
+}
 
 // Compile with command:
 // go build -o greeter.so -buildmode=c-shared server.go

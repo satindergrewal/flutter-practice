@@ -12,6 +12,9 @@ import 'dart:ffi';
 typedef startgrpc_func = void Function();
 typedef StartGrpc = void Function();
 
+typedef stopgrpc_func = void Function();
+typedef StopGrpc = void Function();
+
 void main() => runApp(new MyApp());
 
 class MyApp extends StatelessWidget {
@@ -71,6 +74,17 @@ class _MyHomePageState extends State<MyHomePage> {
     startGrpc();
   }
 
+  static void _stopGrpc() async {
+    // -- Normal gRPC server stop code --
+    final greeter = DynamicLibrary.open('assets/greeter.so');
+    final void Function() stopGrpc = greeter
+        .lookup<NativeFunction<Void Function()>>('StopGrpc')
+        .asFunction();
+    // String msg = "Stoped gRPC server...";
+    // sendPort.send(msg);
+    stopGrpc();
+  }
+
   void _handleMessage(dynamic data) {
     print('RECEIVED: ' + data);
     setState(() {
@@ -84,6 +98,7 @@ class _MyHomePageState extends State<MyHomePage> {
         _running = false;
         notification = '';
       });
+      _stopGrpc();
       _receivePort.close();
       _isolate.kill(priority: Isolate.immediate);
       _isolate = null;
