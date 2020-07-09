@@ -111,14 +111,20 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: new AppBar(
         title: new Text(widget.title),
       ),
-      body: new Center(
-        child: new Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            new Text(
-              notification,
-            ),
-          ],
+      body: WillPopScope(
+              onWillPop: () async {
+                print('Do you want to quit?');
+                return false;
+              },
+              child: Center(
+          child: new Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              new Text(
+                notification,
+              ),
+            ],
+          ),
         ),
       ),
       floatingActionButton: new FloatingActionButton(
