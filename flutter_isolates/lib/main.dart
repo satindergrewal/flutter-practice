@@ -3,6 +3,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'dart:isolate';
+import 'lifecycle_manager.dart';
 
 import 'dart:ffi';
 
@@ -20,12 +21,14 @@ void main() => runApp(new MyApp());
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return new MaterialApp(
-      title: 'Flutter Isolate Demo',
-      theme: new ThemeData(
-        primarySwatch: Colors.blue,
+    return LifeCycleManager(
+          child: MaterialApp(
+        title: 'Flutter Isolate Demo',
+        theme: new ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        home: new MyHomePage(title: 'Flutter Isolates'),
       ),
-      home: new MyHomePage(title: 'Flutter Isolates'),
     );
   }
 }
