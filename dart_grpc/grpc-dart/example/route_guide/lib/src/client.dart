@@ -35,9 +35,9 @@ class Client {
     // Run all of the demos in order.
     try {
       await runGetFeature();
-      await runListFeatures();
-      await runRecordRoute();
-      await runRouteChat();
+      // await runListFeatures();
+      // await runRecordRoute();
+      // await runRouteChat();
     } catch (e) {
       print('Caught error: $e');
     }
@@ -68,82 +68,82 @@ class Client {
     printFeature(await stub.getFeature(point2));
   }
 
-  /// Run the listFeatures demo. Calls listFeatures with a rectangle containing
-  /// all of the features in the pre-generated database. Prints each response as
-  /// it comes in.
-  Future<void> runListFeatures() async {
-    final lo = Point()
-      ..latitude = 400000000
-      ..longitude = -750000000;
-    final hi = Point()
-      ..latitude = 420000000
-      ..longitude = -730000000;
-    final rect = Rectangle()
-      ..lo = lo
-      ..hi = hi;
+  // /// Run the listFeatures demo. Calls listFeatures with a rectangle containing
+  // /// all of the features in the pre-generated database. Prints each response as
+  // /// it comes in.
+  // Future<void> runListFeatures() async {
+  //   final lo = Point()
+  //     ..latitude = 400000000
+  //     ..longitude = -750000000;
+  //   final hi = Point()
+  //     ..latitude = 420000000
+  //     ..longitude = -730000000;
+  //   final rect = Rectangle()
+  //     ..lo = lo
+  //     ..hi = hi;
 
-    print('Looking for features between 40, -75 and 42, -73');
-    await for (var feature in stub.listFeatures(rect)) {
-      printFeature(feature);
-    }
-  }
+  //   print('Looking for features between 40, -75 and 42, -73');
+  //   await for (var feature in stub.listFeatures(rect)) {
+  //     printFeature(feature);
+  //   }
+  // }
 
-  /// Run the recordRoute demo. Sends several randomly chosen points from the
-  /// pre-generated feature database with a variable delay in between. Prints
-  /// the statistics when they are sent from the server.
-  Future<void> runRecordRoute() async {
-    Stream<Point> generateRoute(int count) async* {
-      final random = Random();
+  // /// Run the recordRoute demo. Sends several randomly chosen points from the
+  // /// pre-generated feature database with a variable delay in between. Prints
+  // /// the statistics when they are sent from the server.
+  // Future<void> runRecordRoute() async {
+  //   Stream<Point> generateRoute(int count) async* {
+  //     final random = Random();
 
-      for (int i = 0; i < count; i++) {
-        final point = featuresDb[random.nextInt(featuresDb.length)].location;
-        print(
-            'Visiting point ${point.latitude / coordFactor}, ${point.longitude / coordFactor}');
-        yield point;
-        await Future.delayed(Duration(milliseconds: 200 + random.nextInt(100)));
-      }
-    }
+  //     for (int i = 0; i < count; i++) {
+  //       final point = featuresDb[random.nextInt(featuresDb.length)].location;
+  //       print(
+  //           'Visiting point ${point.latitude / coordFactor}, ${point.longitude / coordFactor}');
+  //       yield point;
+  //       await Future.delayed(Duration(milliseconds: 200 + random.nextInt(100)));
+  //     }
+  //   }
 
-    final summary = await stub.recordRoute(generateRoute(10));
-    print('Finished trip with ${summary.pointCount} points');
-    print('Passed ${summary.featureCount} features');
-    print('Travelled ${summary.distance} meters');
-    print('It took ${summary.elapsedTime} seconds');
-  }
+  //   final summary = await stub.recordRoute(generateRoute(10));
+  //   print('Finished trip with ${summary.pointCount} points');
+  //   print('Passed ${summary.featureCount} features');
+  //   print('Travelled ${summary.distance} meters');
+  //   print('It took ${summary.elapsedTime} seconds');
+  // }
 
-  /// Run the routeChat demo. Send some chat messages, and print any chat
-  /// messages that are sent from the server.
-  Future<void> runRouteChat() async {
-    RouteNote createNote(String message, int latitude, int longitude) {
-      final location = Point()
-        ..latitude = latitude
-        ..longitude = longitude;
-      return RouteNote()
-        ..message = message
-        ..location = location;
-    }
+  // /// Run the routeChat demo. Send some chat messages, and print any chat
+  // /// messages that are sent from the server.
+  // Future<void> runRouteChat() async {
+  //   RouteNote createNote(String message, int latitude, int longitude) {
+  //     final location = Point()
+  //       ..latitude = latitude
+  //       ..longitude = longitude;
+  //     return RouteNote()
+  //       ..message = message
+  //       ..location = location;
+  //   }
 
-    final notes = <RouteNote>[
-      createNote('First message', 0, 0),
-      createNote('Second message', 0, 1),
-      createNote('Third message', 1, 0),
-      createNote('Fourth message', 0, 0),
-    ];
+  //   final notes = <RouteNote>[
+  //     createNote('First message', 0, 0),
+  //     createNote('Second message', 0, 1),
+  //     createNote('Third message', 1, 0),
+  //     createNote('Fourth message', 0, 0),
+  //   ];
 
-    Stream<RouteNote> outgoingNotes() async* {
-      for (final note in notes) {
-        // Short delay to simulate some other interaction.
-        await Future.delayed(Duration(milliseconds: 10));
-        print('Sending message ${note.message} at ${note.location.latitude}, '
-            '${note.location.longitude}');
-        yield note;
-      }
-    }
+  //   Stream<RouteNote> outgoingNotes() async* {
+  //     for (final note in notes) {
+  //       // Short delay to simulate some other interaction.
+  //       await Future.delayed(Duration(milliseconds: 10));
+  //       print('Sending message ${note.message} at ${note.location.latitude}, '
+  //           '${note.location.longitude}');
+  //       yield note;
+  //     }
+  //   }
 
-    final call = stub.routeChat(outgoingNotes());
-    await for (var note in call) {
-      print(
-          'Got message ${note.message} at ${note.location.latitude}, ${note.location.longitude}');
-    }
-  }
+  //   final call = stub.routeChat(outgoingNotes());
+  //   await for (var note in call) {
+  //     print(
+  //         'Got message ${note.message} at ${note.location.latitude}, ${note.location.longitude}');
+  //   }
+  // }
 }
