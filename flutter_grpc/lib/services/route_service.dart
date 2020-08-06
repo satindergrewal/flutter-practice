@@ -3,7 +3,6 @@ import 'dart:io';
 import 'dart:math' show Random;
 import 'package:flutter_grpc/common/grpc_commons.dart';
 import 'package:flutter_grpc/model/google/protobuf/empty.pb.dart';
-import 'package:flutter_grpc/model/hello.pbgrpc.dart';
 import 'package:flutter_grpc/model/route_guide.pb.dart';
 import 'package:flutter_grpc/model/route_guide.pbgrpc.dart';
 
@@ -25,24 +24,20 @@ List<Feature> _readDatabase() {
 }
 
 class RouteGuideService {
-  static Future<Feature> GetFeature() async{
-    var client = RouteGuideClient(GrpcClientSingleton().client);
-    return await client.getFeature(
-      final point1 = Point()
-        ..latitude = 409146138
-        ..longitude = -746188906;
-      final point2 = Point()
-        ..latitude = 0
-        ..longitude = 0;
-
-      printFeature(await stub.getFeature(point1));
-      printFeature(await stub.getFeature(point2));
-    );
-  }
-
   RouteGuideClient stub;
   
-  void printFeature(Feature feature) {
+  static Future<Feature> GetFeature() async{
+    var client = RouteGuideClient(GrpcClientSingleton().client);
+    final point1 = Point()
+      ..latitude = 409146138
+      ..longitude = -746188906;
+      printFeature(await client.getFeature(point1));
+    return await client.getFeature(point1);
+  }
+
+  
+  
+  static void printFeature(Feature feature) {
     final latitude = feature.location.latitude;
     final longitude = feature.location.longitude;
     final name = feature.name.isEmpty

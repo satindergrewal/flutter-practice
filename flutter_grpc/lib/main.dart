@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_grpc/services/hello_service.dart';
+import 'package:flutter_grpc/services/helloworld_service.dart';
 
 void main() => runApp(new FlutterGrpcApp());
 
@@ -33,7 +33,7 @@ class _FlutterGrpcAppState extends State<FlutterGrpcApp> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               FlatButton(
-                  onPressed: () async => _sayHello(),
+                  onPressed: () async => _sayHello('Satinder'),
                   color: Theme.of(context).primaryColor,
                   child: Text(
                     "Let's say hi!",
@@ -47,10 +47,10 @@ class _FlutterGrpcAppState extends State<FlutterGrpcApp> {
     );
   }
 
-  Future<void> _sayHello() async {
-    var hello = await HelloService.SayHello();
+  Future<void> _sayHello(String name) async {
+    var hello = await HelloWorldService.SayHello(name);
     setState(() {
-      res = hello.response;
+      res = hello.message;
     });
   }
 }
