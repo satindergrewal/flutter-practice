@@ -1,5 +1,4 @@
 import 'package:flutter_grpc/common/grpc_commons.dart';
-import 'package:flutter_grpc/model/google/protobuf/empty.pb.dart';
 import 'package:flutter_grpc/model/helloworld.pb.dart';
 import 'package:flutter_grpc/model/helloworld.pbgrpc.dart';
 

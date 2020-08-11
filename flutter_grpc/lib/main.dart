@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_grpc/services/helloworld_service.dart';
+import 'package:flutter_grpc/model/shurli.pb.dart';
+import 'package:flutter_grpc/services/shurli_service.dart';
 
 void main() => runApp(new FlutterGrpcApp());
 
@@ -8,11 +9,11 @@ class FlutterGrpcApp extends StatefulWidget {
 }
 
 class _FlutterGrpcAppState extends State<FlutterGrpcApp> {
-  String res;
+  String resname;
 
   @override
   void initState() {
-    res = "";
+    resname = "";
     super.initState();
   }
 
@@ -33,13 +34,13 @@ class _FlutterGrpcAppState extends State<FlutterGrpcApp> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               FlatButton(
-                  onPressed: () async => _sayHello('Satinder'),
+                  onPressed: () async => _walletInfo(),
                   color: Theme.of(context).primaryColor,
                   child: Text(
                     "Let's say hi!",
                     style: TextStyle(color: Colors.white),
                   )),
-              res.isNotEmpty ? Text("Server says: $res") : Container(),
+              resname.isNotEmpty ? Text("Server says: $resname") : Container(),
             ],
           ),
         ),
@@ -47,10 +48,13 @@ class _FlutterGrpcAppState extends State<FlutterGrpcApp> {
     );
   }
 
-  Future<void> _sayHello(String name) async {
-    var hello = await HelloWorldService.SayHello(name);
+  Future<void> _walletInfo() async {
+    var res = await ShurliService.WalletInfo();
+    var list = new List(res.wallets.length);
+    list = res.wallets;
+    print(list[0].name);
     setState(() {
-      res = hello.message;
+      resname = list[0].name.toString();
     });
   }
 }

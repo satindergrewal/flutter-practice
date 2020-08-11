@@ -9,7 +9,7 @@ class GrpcClientSingleton {
 
   GrpcClientSingleton._internal() {
     client = ClientChannel("127.0.0.1", // Your IP here, localhost might not work.
-        port: 50051,
+        port: 50052,
         options: ChannelOptions(
           //TODO: Change to secure with server certificates
           credentials: ChannelCredentials.insecure(),
